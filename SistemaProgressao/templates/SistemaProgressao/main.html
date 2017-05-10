@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Bem-vindo ao Sistema Progress&atilde;o</title>
+	<meta charset = 'utf-8'>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i||Ubuntu:300, 400, 500, 700" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+	<header class="main-header header-attribute" style="background-image: url({% static '/image/header-background.png' %});">
+
+		<div>
+
+			<img class="avatar-shape" src="{% static '/image/Avatar-Shape.png' %}">
+
+			<h1>
+				<span style="font-size: 26px;">Bem-vindo,</span> <br>
+				<a href=""><span> {{ Usuario.nome }} </span></a>
+			</h1>
+
+			<nav>
+				<img class="prisma-logo-image" style="width: 31px; height: 40px; margin-top: -10%; margin-right: 5px;" src="{% static '/image/PRISMA_logo.png' %}">
+				<span class="prisma-logo-text" style="font-size: 26px;" href="#">prisma</span> <br>
+
+				<a href="../apresentacao">Log Out</a>
+
+			</nav>
+
+		</div>
+
+	</header>
+	
+	<div>
+
+		<header class="main-header tool-bar">
+
+			<img class="logo-ifes-image" src="{% static '/image/IFES_logo.png' %}">
+
+			<a href="anexoi">Anexo I</a>
+			<a href="anexoii">Anexo II</a>
+			<a href="anexoiii">Anexo III</a>
+			<a href="anexoiv">Anexo IV</a>
+
+			<a href="../historico">Histórico</a>
+
+			<nav>
+
+				<img class="add-icon" src="{% static '/image/Add File.png' %}">
+				
+			</nav>
+
+		</header>
+
+	</div>
+
+	{% block content %}
+    {% endblock %}
+
+</body>
+</html>

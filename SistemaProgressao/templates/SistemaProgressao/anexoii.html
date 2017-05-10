@@ -1,0 +1,17 @@
+{% extends 'SistemaProgressao/main.html' %}
+<html>
+<head>
+	<title>Sistema Progressao - Anexo II</title>
+</head>
+
+<body>
+{% block content %}
+<h2>Sistema Progressao</h2>
+	<form method="POST">
+		{% csrf_token %}
+	    
+		{{ form.as_p }}
+	</form>
+</body>
+{% endblock content %}
+</html>

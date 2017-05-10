@@ -1,0 +1,66 @@
+{% extends 'SistemaProgressao/main.html' %}
+
+<html>
+<head>
+	<title>Sistema Progressao - Anexo I</title>
+</head>
+
+<body>
+	{% block content %}
+	<h2>Sistema Progressao</h2>
+		
+	<form method="POST">
+		{% csrf_token %}
+		
+		<div class="container-fluid">
+			<h4>1. Eixo 1 - Avaliação Discente</h4>
+			<div class="col-xs-2">
+				
+			</div>
+			<br>
+			<div class="col-xs-4">
+				Pontuação do Eixo
+			</div>
+			<div class="col-xs-2">
+				Máximo 40 pontos
+			</div>
+			<div class="col-xs-2">
+				Total
+				{{ form.eixo_1 }}		
+			</div>
+			<div class="col-xs-2">
+				Jusficativa / Comentário 
+				{{ form.eixo_1_justificacao_comentario }}			
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<h4>2. Eixo 2.1 - Ensino Convencional</h4>
+			<div class="col-xs-2">
+				Código
+			</div>
+			<br>
+			<div class="col-xs-4">
+				Carga horária de ensino semanal
+			</div>
+			<div class="col-xs-2">
+				Horas de aula (média do per)/semana
+				{{ form.eixo_2_1_a_hora }}
+			</div>
+			<div class="col-xs-2">
+				Pontos por hora de aula por semana
+				{{ form.eixo_2_1_a_pontos }}
+			</div>
+			<div class="col-xs-2">
+				Total
+				{{ form.eixo_2_1_a_total }}			
+			</div>
+		</div>
+	    
+		{{ form.as_p }}
+	</form>
+	{% endblock content %}
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Sistema de Progress&atilde;o Otimizado</title>
+	<meta charset = 'utf-8'>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i||Ubuntu:300, 400, 500, 700" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/apresentacao.css' %}">
+</head>
+
+<body>
+
+	<header class="main-header header-attribute">
+
+		<span class="prisma-logo-text">prisma</span>
+		<img class="logo-ifes-image logo-ifes-attribute" src="{% static '/image/IFES_logo.png' %}">
+
+	</header>
+
+
+	<main class="banner banner-attribute">
+
+		<img class="prisma-logo-image" src="{% static '/image/PRISMA_logo.png' %}">
+		<div>
+			<img class="line" src="{% static '/image/line.png' %}">
+		</div>
+		<div class="banner-title">Seu sistema de progressão automatizado</div>
+		<div class="banner-image" style="background-image: url('{% static '/image/banner-background.png' %}');">
+		</div>
+		<div>
+			<form method="get" action="login">
+				<button class="banner-button" type="button">ENTRAR</button>
+			</form>
+		</div>
+
+	</main>
+
+
+	<div class="info-section info-section-attribute">
+
+		<h1 class="prisma-logo-text" style="color: #3b3b3b;">Sobre o <b>PRISMA</b></h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id orci sapien. Donec tincidunt fringilla fermentum. Cras cursus dictum tellus. In hac habitasse platea dictumst. Nulla facilisi. Vestibulum aliquet accumsan libero vitae semper. Pellentesque felis velit, semper vitae arcu lobortis, placerat sollicitudin risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+		</p>
+		<center><img src="{% static '/image/line.png' %}"></center>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id orci sapien. Donec tincidunt fringilla fermentum. Cras cursus dictum tellus. In hac habitasse platea dictumst. Nulla facilisi. Vestibulum aliquet accumsan libero vitae semper. Pellentesque felis velit, semper vitae arcu lobortis, placerat sollicitudin risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+		</p>
+
+		<div>
+			<ul>
+				<li><button class="info-section-button" type="button">CADASTRE-SE</button></li>
+				<li style="margin-left: 4%">FALE CONOSCO</li>
+			</ul>
+		</div>
+
+	</div>
+</body>
+</html>
