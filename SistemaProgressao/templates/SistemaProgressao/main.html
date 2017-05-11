@@ -5,7 +5,7 @@
 	<title>Bem-vindo ao Sistema Progress&atilde;o</title>
 	<meta charset = 'utf-8'>
 	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
-	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i||Ubuntu:300, 400, 500, 700" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i||Ubuntu:300,400,500,700">
 	<link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
@@ -24,31 +24,31 @@
 				<img class="prisma-logo-image" style="width: 31px; height: 40px; margin-top: -10%; margin-right: 5px;" src="{% static '/image/PRISMA_logo.png' %}">
 				<span class="prisma-logo-text" style="font-size: 26px;" href="#">prisma</span> <br>
 
-				<a href="../apresentacao">Log Out</a>
+				<a href="/apresentacao">Log Out</a>
 
 			</nav>
 
 		</div>
 
 	</header>
-	
+
 	<div>
 
 		<header class="main-header tool-bar">
 
 			<img class="logo-ifes-image" src="{% static '/image/IFES_logo.png' %}">
 
-			<a href="anexoi">Anexo I</a>
-			<a href="anexoii">Anexo II</a>
-			<a href="anexoiii">Anexo III</a>
-			<a href="anexoiv">Anexo IV</a>
+			<a href="/anexoi">Anexo I</a>
+			<a href="/anexoii">Anexo II</a>
+			<a href="/anexoiii">Anexo III</a>
+			<a href="/anexoiv">Anexo IV</a>
 
-			<a href="../historico">Histórico</a>
+			<a href="/historico">Histórico</a>
 
 			<nav>
 
 				<img class="add-icon" src="{% static '/image/Add File.png' %}">
-				
+
 			</nav>
 
 		</header>
@@ -56,7 +56,7 @@
 	</div>
 
 	{% block content %}
-    {% endblock %}
+  {% endblock %}
 
 </body>
 </html>
