@@ -1,16 +1,19 @@
 <html>
 <head>
-	<title>Sistema de Progressão - Log in</title>
+	<title>Sistema Progressao - Log in</title>
 </head>
 
 <body>
 <h2>Sistema Progressao</h2>
-	<form method="POST">
+	<form method="post" action="{% url 'SistemaProgressao:login' %}">
 		{% csrf_token %}
-	    
-		{{ form.as_p }}
-	    
-		<input type='submit' value='Login'>
+
+		Email <br>
+		<input type="text" name="email"> <br>
+		Password <br>
+		<input type="password" name="password"> <br>
+
+		<input type='submit' value='Entrar'>
 	</form>
 </body>
 </html>

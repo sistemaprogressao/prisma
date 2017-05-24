@@ -1,30 +1,56 @@
 from django import forms
 from .models import *
+from django.forms import ModelForm, TextInput
 
+class FormUser(forms.ModelForm):
+
+	first_name = forms.CharField(label='Nome', max_length=30)
+	last_name = forms.CharField(label='Sobrenome', max_length=30)
+	email = forms.EmailField(label='Email')
+
+	class Meta:
+		model = User
+		fields = ['first_name', 'last_name', 'username', 'email', 'password']
+		widget = {
+			'username': TextInput(attrs={'id':'id-username'}),
+			'password': TextInput(attrs={'id':'id-password', 'type':'password'}),
+		}
+		labels = {
+			'username': ('SIAPE:'),
+			'password': ('Senha:'),
+		}
+		help_texts = {
+			'username': '',
+		}
+'''
 class UsuarioLoginForm(forms.ModelForm):
 
-	senha = forms.CharField(widget=forms.PasswordInput())
-	
+	password = forms.CharField(widget=forms.PasswordInput())
+
 	# login usuario
 	class Meta:
 		model = Usuario
-		fields = ('siape','senha',)
+		fields = ('email','password',)
+		widget = {
+			'email': forms.TextInput(attrs={'class': 'form-control', 'maxlength': 254}),
+			'password': forms.PasswordInput(attrs={'class': 'form-control', 'maxlength': 254}),
+		}
 
-class UsuarioLCadastrarForm(forms.ModelForm):
+	def save(self, commit=True):
+		usuario = super(UsuarioModelForm, self).save(commit=False)
+		usuario.set_password(self.cleaned_data['password'])
 
-	senha = forms.CharField(widget=forms.PasswordInput())
+		if commit:
+			usuario.save()
 
-	# cadastro usuario
-	class Meta:
-		model = Usuario
-		fields = ('nome','email','senha','siape',)
-		
+		return usuario
+'''
 ###
 # tudo ok ate aqui
 ###
 
 class DocumentosForm(forms.ModelForm):
-	
+
 	# envio dos documentos
 	class Meta:
 		model = Documento
@@ -71,4 +97,3 @@ class AnexoIVForm(forms.ModelForm):
 	class Meta:
 		model = AnexoIV
 		fields = '__all__'
-

@@ -17,14 +17,17 @@
 
 			<h1>
 				<span style="font-size: 26px;">Bem-vindo,</span> <br>
-				<a href=""><span> {{ Usuario.nome }} </span></a>
+				<a href=""><span> {{ Usuario.username }} </span></a>
 			</h1>
 
 			<nav>
 				<img class="prisma-logo-image" style="width: 31px; height: 40px; margin-top: -10%; margin-right: 5px;" src="{% static '/image/PRISMA_logo.png' %}">
 				<span class="prisma-logo-text" style="font-size: 26px;" href="#">prisma</span> <br>
 
-				<a href="/apresentacao">Log Out</a>
+				<div align="right">
+					<a href="{% url 'SistemaProgressao:change_password' %}">Alterar senha</a><br>
+					<a href="{% url 'SistemaProgressao:logout' %}">Log Out</a>
+				</div>
 
 			</nav>
 

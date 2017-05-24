@@ -1,16 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+"""
+# redefinir os anexos
+"""
 
 # classe usuario
 class Usuario(models.Model):
-	nome = models.CharField(max_length=90)
-	email = models.CharField(max_length=90)
-	senha = models.CharField(max_length=90)
-	siape = models.IntegerField()
-
-	# retorna nome e siape
-	# para preenchimentos de formularios
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	
 	def __str__ (self):
-		return self.nome, self.siape
+		return self.user.first_name
 
 # classe dos documentos enviados pelos usuarios
 class Documento(models.Model):
@@ -19,14 +19,14 @@ class Documento(models.Model):
 
 # classe do historico de movimentacao do usuario
 class Historico(models.Model):
-	# docsfinal/ é o diretorio para os arquivos 
+	# docsfinal/ é o diretorio para os arquivos
 	link_pdf_final = models.FileField(upload_to='documents/', max_length=255)
 	fk_usuario = models.ForeignKey(Usuario)
 
 
-# 
+#
 # desenvolvimentos dos formularios baseados no anexos I, II, III e IV
-# 
+#
 
 # informacoes gerais que todos os anexos vao possuir
 class InfoGerais(models.Model):
@@ -35,7 +35,7 @@ class InfoGerais(models.Model):
 	classe = models.CharField(max_length=15)
 	periodo = models.DateField()
 
-	# retorna tudo 
+	# retorna tudo
 	def preenchimento(self):
 		return self.usuario, self.lotacao, self.classe, self.periodo
 
@@ -65,11 +65,11 @@ class AnexoI(models.Model):
 	# total pontuacao
 	eixo_2_1_a_total = models.FloatField()
 	eixo_2_1_b_total = models.FloatField()
-	eixo_2_1_c_total = models.FloatField()	
+	eixo_2_1_c_total = models.FloatField()
 
 	### INICIO EIXO 2.2 ###
 	# orientacao de alunos
-	
+
 	# numero
 	eixo_2_2_a_num = models.FloatField()
 	eixo_2_2_b_num = models.FloatField()
@@ -111,7 +111,7 @@ class AnexoI(models.Model):
 
 	### INICIO EIXO 2.3 ###
 	# participacao em projetos, bancas, comissoes, conselhos e equivalentes
-	
+
 	# numero
 	eixo_2_3_a_num = models.FloatField()
 	eixo_2_3_b_num = models.FloatField()
@@ -144,7 +144,7 @@ class AnexoI(models.Model):
 
 	### INICIO EIXO 2.4 ###
 	# participacao em reunioes e cumprimentos de prazos
-	
+
 	# numero
 	eixo_2_4_a_num = models.FloatField()
 	eixo_2_4_b_num = models.FloatField()
@@ -199,15 +199,15 @@ class AnexoI(models.Model):
 
 	### INICIO EIXO 4.1 ###
 	# atividades de pesquisa e inovacao tecnologica
-	# projeto de pesquisa e desenvolvimento tecnologico 
+	# projeto de pesquisa e desenvolvimento tecnologico
 
-	# numero 
+	# numero
 	eixo_4_1_a_num = models.FloatField()
 	eixo_4_1_b_num = models.FloatField()
 	eixo_4_1_c_num = models.FloatField()
 	eixo_4_1_d_num = models.FloatField()
 
-	# pontos 
+	# pontos
 	eixo_4_1_a_pontos = models.FloatField()
 	eixo_4_1_b_pontos = models.FloatField()
 	eixo_4_1_c_pontos = models.FloatField()
@@ -222,7 +222,7 @@ class AnexoI(models.Model):
 	### INICIO EIXO 4.2 ###
 	# producao bibliografica
 
-	# numero 
+	# numero
 	eixo_4_2_a_num = models.FloatField()
 	eixo_4_2_b_num = models.FloatField()
 	eixo_4_2_c_num = models.FloatField()
@@ -253,7 +253,7 @@ class AnexoI(models.Model):
 	eixo_4_2_r_num = models.FloatField()
 	eixo_4_2_s_num = models.FloatField()
 
-	# pontos 
+	# pontos
 	eixo_4_2_a_pontos = models.FloatField()
 	eixo_4_2_b_pontos = models.FloatField()
 	eixo_4_2_c_pontos = models.FloatField()
@@ -317,8 +317,8 @@ class AnexoI(models.Model):
 
 	### INICIO EIXO 4.3 ###
 	# producao tecnica
-	
-	# numero 
+
+	# numero
 	eixo_4_3_a_num = models.FloatField()
 	eixo_4_3_b_num = models.FloatField()
 	eixo_4_3_c_num = models.FloatField()
@@ -357,7 +357,7 @@ class AnexoI(models.Model):
 	eixo_4_3_z11_num = models.FloatField()
 	eixo_4_3_z12_num = models.FloatField()
 
-	# pontos 
+	# pontos
 	eixo_4_3_a_pontos = models.FloatField()
 	eixo_4_3_b_pontos = models.FloatField()
 	eixo_4_3_c_pontos = models.FloatField()
@@ -396,7 +396,7 @@ class AnexoI(models.Model):
 	eixo_4_3_z11_pontos = models.FloatField()
 	eixo_4_3_z12_pontos = models.FloatField()
 
-	# total 
+	# total
 	eixo_4_3_a_total = models.FloatField()
 	eixo_4_3_b_total = models.FloatField()
 	eixo_4_3_c_total = models.FloatField()
@@ -498,7 +498,7 @@ class AnexoI(models.Model):
 	codigo_a_pontos = models.FloatField() # pontos por semestre
 	codigo_a_total = models.FloatField()
 
-	# situacoes especiais 
+	# situacoes especiais
 	pontos = models.FloatField()
 	total = models.FloatField()
 
@@ -514,7 +514,7 @@ class AnexoII(models.Model):
 	### INICIO EIXO 3.1 ###
 	# atividades de capacitacao
 	# participacao em cursos e aprovacao em disciplinas
-	
+
 	# numero
 	eixo_3_1_a_num = models.FloatField()
 	eixo_3_1_b_num = models.FloatField()
@@ -550,15 +550,15 @@ class AnexoII(models.Model):
 
 	### INICIO EIXO 4.1 ###
 	# atividades de pesquisa e inovacao tecnologica
-	# projeto de pesquisa e desenvolvimento tecnologico 
+	# projeto de pesquisa e desenvolvimento tecnologico
 
-	# numero 
+	# numero
 	eixo_4_1_a_num = models.FloatField()
 	eixo_4_1_b_num = models.FloatField()
 	eixo_4_1_c_num = models.FloatField()
 	eixo_4_1_d_num = models.FloatField()
 
-	# pontos 
+	# pontos
 	eixo_4_1_a_pontos = models.FloatField()
 	eixo_4_1_b_pontos = models.FloatField()
 	eixo_4_1_c_pontos = models.FloatField()
@@ -573,7 +573,7 @@ class AnexoII(models.Model):
 	### INICIO EIXO 4.2 ###
 	# producao bibliografica
 
-	# numero 
+	# numero
 	eixo_4_2_a_num = models.FloatField()
 	eixo_4_2_b_num = models.FloatField()
 	eixo_4_2_c_num = models.FloatField()
@@ -604,7 +604,7 @@ class AnexoII(models.Model):
 	eixo_4_2_r_num = models.FloatField()
 	eixo_4_2_s_num = models.FloatField()
 
-	# pontos 
+	# pontos
 	eixo_4_2_a_pontos = models.FloatField()
 	eixo_4_2_b_pontos = models.FloatField()
 	eixo_4_2_c_pontos = models.FloatField()
@@ -668,8 +668,8 @@ class AnexoII(models.Model):
 
 	### INICIO EIXO 4.3 ###
 	# producao tecnica
-	
-	# numero 
+
+	# numero
 	eixo_4_3_a_num = models.FloatField()
 	eixo_4_3_b_num = models.FloatField()
 	eixo_4_3_c_num = models.FloatField()
@@ -708,7 +708,7 @@ class AnexoII(models.Model):
 	eixo_4_3_z11_num = models.FloatField()
 	eixo_4_3_z12_num = models.FloatField()
 
-	# pontos 
+	# pontos
 	eixo_4_3_a_pontos = models.FloatField()
 	eixo_4_3_b_pontos = models.FloatField()
 	eixo_4_3_c_pontos = models.FloatField()
@@ -747,7 +747,7 @@ class AnexoII(models.Model):
 	eixo_4_3_z11_pontos = models.FloatField()
 	eixo_4_3_z12_pontos = models.FloatField()
 
-	# total 
+	# total
 	eixo_4_3_a_total = models.FloatField()
 	eixo_4_3_b_total = models.FloatField()
 	eixo_4_3_c_total = models.FloatField()
@@ -796,7 +796,7 @@ class AnexoIII(models.Model):
 	### INICIO EIXO 3.1 ###
 	# atividades de capacitacao
 	# participacao em cursos e aprovacao em disciplinas
-	
+
 	# numero
 	eixo_3_1_a_num = models.FloatField()
 	eixo_3_1_b_num = models.FloatField()
@@ -906,13 +906,13 @@ class AnexoIII(models.Model):
 	# numero
 	a_num = models.FloatField()
 
-	# pontos por semestre 
+	# pontos por semestre
 	a_pontos = models.FloatField()
 
 	# total
 	total = models.FloatField()
 
-	# em caso de afastamente medico, ou equivalente, 
+	# em caso de afastamente medico, ou equivalente,
 	# o valor aqui sera o minimo requerido, 60 pontos
 	pontuacao_min = models.FloatField()
 
@@ -943,11 +943,11 @@ class AnexoIV(models.Model):
 	# total pontuacao
 	eixo_2_1_a_total = models.FloatField()
 	eixo_2_1_b_total = models.FloatField()
-	eixo_2_1_c_total = models.FloatField()	
+	eixo_2_1_c_total = models.FloatField()
 
 	### INICIO EIXO 2.2 ###
 	# orientacao de alunos
-	
+
 	# numero
 	eixo_2_2_a_num = models.FloatField()
 	eixo_2_2_b_num = models.FloatField()
@@ -989,7 +989,7 @@ class AnexoIV(models.Model):
 
 	### INICIO EIXO 2.3 ###
 	# participacao em projetos, bancas, comissoes, conselhos e equivalentes
-	
+
 	# numero
 	eixo_2_3_a_num = models.FloatField()
 	eixo_2_3_b_num = models.FloatField()
@@ -1022,7 +1022,7 @@ class AnexoIV(models.Model):
 
 	### INICIO EIXO 2.4 ###
 	# participacao em reunioes e cumprimentos de prazos
-	
+
 	# numero
 	eixo_2_4_a_num = models.FloatField()
 	eixo_2_4_b_num = models.FloatField()
@@ -1077,15 +1077,15 @@ class AnexoIV(models.Model):
 
 	### INICIO EIXO 4.1 ###
 	# atividades de pesquisa e inovacao tecnologica
-	# projeto de pesquisa e desenvolvimento tecnologico 
+	# projeto de pesquisa e desenvolvimento tecnologico
 
-	# numero 
+	# numero
 	eixo_4_1_a_num = models.FloatField()
 	eixo_4_1_b_num = models.FloatField()
 	eixo_4_1_c_num = models.FloatField()
 	eixo_4_1_d_num = models.FloatField()
 
-	# pontos 
+	# pontos
 	eixo_4_1_a_pontos = models.FloatField()
 	eixo_4_1_b_pontos = models.FloatField()
 	eixo_4_1_c_pontos = models.FloatField()
@@ -1100,7 +1100,7 @@ class AnexoIV(models.Model):
 	### INICIO EIXO 4.2 ###
 	# producao bibliografica
 
-	# numero 
+	# numero
 	eixo_4_2_a_num = models.FloatField()
 	eixo_4_2_b_num = models.FloatField()
 	eixo_4_2_c_num = models.FloatField()
@@ -1131,7 +1131,7 @@ class AnexoIV(models.Model):
 	eixo_4_2_r_num = models.FloatField()
 	eixo_4_2_s_num = models.FloatField()
 
-	# pontos 
+	# pontos
 	eixo_4_2_a_pontos = models.FloatField()
 	eixo_4_2_b_pontos = models.FloatField()
 	eixo_4_2_c_pontos = models.FloatField()
@@ -1195,8 +1195,8 @@ class AnexoIV(models.Model):
 
 	### INICIO EIXO 4.3 ###
 	# producao tecnica
-	
-	# numero 
+
+	# numero
 	eixo_4_3_a_num = models.FloatField()
 	eixo_4_3_b_num = models.FloatField()
 	eixo_4_3_c_num = models.FloatField()
@@ -1235,7 +1235,7 @@ class AnexoIV(models.Model):
 	eixo_4_3_z11_num = models.FloatField()
 	eixo_4_3_z12_num = models.FloatField()
 
-	# pontos 
+	# pontos
 	eixo_4_3_a_pontos = models.FloatField()
 	eixo_4_3_b_pontos = models.FloatField()
 	eixo_4_3_c_pontos = models.FloatField()
@@ -1274,7 +1274,7 @@ class AnexoIV(models.Model):
 	eixo_4_3_z11_pontos = models.FloatField()
 	eixo_4_3_z12_pontos = models.FloatField()
 
-	# total 
+	# total
 	eixo_4_3_a_total = models.FloatField()
 	eixo_4_3_b_total = models.FloatField()
 	eixo_4_3_c_total = models.FloatField()
@@ -1373,7 +1373,7 @@ class AnexoIV(models.Model):
 
 	### INICIO EIXO 5 ###
 	# atividades de desempenho gerencial
-	# 
+	#
 
 	# numero
 	eixo_5_1_a_num = models.FloatField()
@@ -1448,18 +1448,18 @@ class AnexoIV(models.Model):
 	# numero
 	a_num = models.FloatField()
 
-	# pontos por semestre 
+	# pontos por semestre
 	a_pontos = models.FloatField()
 
 	# total
 	total = models.FloatField()
 
-	# em caso de afastamente medico, ou equivalente, 
+	# em caso de afastamente medico, ou equivalente,
 	# o valor aqui sera o minimo requerido, 60 pontos
 	pontuacao_min = models.FloatField()
 
 '''
-# tudo isso de linha e é agora que vai realmente começar o trabalho 
+# tudo isso de linha e é agora que vai realmente começar o trabalho
 
 o que falta?
 	- retorno das funcoes com os valores totais

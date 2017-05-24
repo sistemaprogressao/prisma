@@ -5,11 +5,11 @@
 
 <body>
 <h2>Sistema Progressao</h2>
-	<form method="POST">
+	<form action="{% url 'SistemaProgressao:cadastrar' %}" method="POST">
 		{% csrf_token %}
-	    
-		{{ form.as_p }}
-	    
+
+		{{ formUser.as_p }}
+
 		<input type='submit' value='Cadastrar'>
 	</form>
 </body>
