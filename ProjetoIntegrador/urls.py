@@ -7,5 +7,4 @@ urlpatterns = [
 	# adionado chamada para a url do Sistema
     url(r'^admin/', admin.site.urls),
     url(r'', include('SistemaProgressao.urls', namespace='SistemaProgressao', app_name='SistemaProgressao')),
-    url(r'^users/', include('SistemaProgressao.users.urls', namespace='users', app_name='users')),
 ]
